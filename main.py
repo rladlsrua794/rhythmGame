@@ -21,7 +21,7 @@ start_button = pygame.image.load("start.jpg")
 exit_button = pygame.image.load("exit.jpg")
 background = pygame.image.load("BackGround.jpg")
 
-title = pygame.transform.scale(start_button, (title_width, title_height))
+title = pygame.transform.scale(title, (title_width, title_height))
 start_button = pygame.transform.scale(start_button, (start_button_width, start_button_height))
 exit_button = pygame.transform.scale(exit_button, (exit_button_width, exit_button_height))
 
