@@ -67,8 +67,29 @@ while running:
         screen.blit(exit_button, (exit_button_x, exit_button_y))
 
         #게임 기능 구현
-    elif game_state == "play":
-        pass
+        # elif game_state == "play":
+font_test = pygame.font.SysFont(None,30)
+point = 0
+
+play = True
+while play:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            play = False
+
+    rect_note = image_note.get_rect()
+    rect_note.left = x_pos_note
+    rect_note.right = y_pos_note
+
+    rect_judge = image_cutline.get_rect()
+    rect_judge.left = x_pos_cutline
+    rect_judge.right = y_pos_cutline
+
+    if rect_judge.colliderect(rect_note):
+        point += 1
+
+    text_point = font_test.render(str(point),True,(0,0,0))
+    background.blit(text_point,(10,10))
 
     pygame.display.update()
 
