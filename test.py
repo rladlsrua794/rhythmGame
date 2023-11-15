@@ -94,7 +94,8 @@ while running:
         #게임 기능 구현
     elif game_state == "play":
         font_test = pygame.font.SysFont(None, 50)
-        point = 0
+        point1 = 0
+        point2 = 0
         judge_rect1 = pygame.draw.line(screen, (255, 255, 255), (50, 650), (350, 650), int(8)) # 판정선 그리기(검은색), (surface, color, start_point, end_point, width)
         judge_rect2 = pygame.draw.line(screen, (255, 255, 255), (450, 650), (750, 650), int(8))
         pygame.draw.line(screen, (255, 255, 255), (400, 0), (400, 800), int(8))
@@ -102,20 +103,21 @@ while running:
         rect_note = image_note.get_rect()
 
         if rect_note.colliderect(judge_rect1):  # 노트랑 판정선 충돌
-            if pygame.key.get_pressed()[keys_to_check[0]]:  # 키보드키랑 충돌
-                point += 1
+            if pygame.key.get_pressed()[keys_to_check[0]]:  # q 키를 눌렀을 때
+                point1 += 1
         if rect_note.colliderect(judge_rect2):  # 노트랑 판정선 충돌
-            if pygame.key.get_pressed()[keys_to_check[1]]:  # 키보드키랑 충돌
-                point += 1
+            if pygame.key.get_pressed()[keys_to_check[1]]:  # w 키를 눌렀을 때
+                point2 += 1
 
-        text_point = font_test.render(str(point), True, (255, 182, 193)) # 색상 핑크색
+        text_point = font_test.render(str(point1), True, (255, 182, 193)) # 색상 핑크색
         background.blit(text_point, (50, 30)) # 텍스트 좌표
+        text_point = font_test.render(str(point2), True, (255, 182, 193))  # 색상 핑크색
+        background.blit(text_point, (750, 30))  # 텍스트 좌표
+
         text_point = font_test.render("P1", True, (255, 255, 255))
         background.blit(text_point, (180,680 ))  # 텍스트 좌표
-
         text_point = font_test.render("P2", True, (255, 255, 255))
         background.blit(text_point, (580,680 ))  # 텍스트 좌표
-
 
     pygame.display.update()
 
